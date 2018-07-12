@@ -52,14 +52,14 @@ public class BaseDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(view);
-        setCanceledOnTouchOutside(cancelTouchOut);
         Window win = getWindow();
         WindowManager.LayoutParams lp = win.getAttributes();
         lp.gravity = gravity;
         lp.height = height;
         lp.width = width;
         win.setAttributes(lp);
+        setContentView(view);
+        setCanceledOnTouchOutside(cancelTouchOut);
     }
 
     private void initTintManager() {
@@ -90,14 +90,10 @@ public class BaseDialog extends Dialog {
      *
      * @param id       控件id
      * @param listener 点击事件
-     * @param dismiss  dismiss
-     * @return
+     *
      */
-    public BaseDialog addListener(int id, View.OnClickListener listener, boolean dismiss) {
+    public BaseDialog addListener(int id, View.OnClickListener listener) {
         view.findViewById(id).setOnClickListener(listener);
-        if (dismiss) {
-            dismiss();
-        }
         return this;
     }
 
@@ -179,17 +175,12 @@ public class BaseDialog extends Dialog {
             return this;
         }
 
-        public Builder addViewOnclick(int viewRes, View.OnClickListener listener) {
-            view.findViewById(viewRes).setOnClickListener(listener);
-            return this;
-        }
-
 
         public BaseDialog build() {
             if (resStyle != -1) {
                 return new BaseDialog(this, resStyle);
             } else {
-                return new BaseDialog(this);
+                return new BaseDialog(this, R.style.TransparentDialog);
             }
         }
     }

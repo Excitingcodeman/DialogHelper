@@ -45,32 +45,32 @@ public class BasePopupWindow extends PopupWindow {
         /**
          * 设置点击外边可以消失
          */
-        setOutsideTouchable(true);
+//        setOutsideTouchable(true);
 
         /**
          *设置可以触摸
          */
-        setTouchable(true);
+//        setTouchable(true);
 
 
         /**
          * 设置点击外部可以消失
          */
 
-        setTouchInterceptor(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                /**
-                 * 判断是不是点击了外部
-                 */
-                if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
-                    return true;
-                }
-                //不是点击外部
-                return false;
-            }
-        });
+//        setTouchInterceptor(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//
+//                /**
+//                 * 判断是不是点击了外部
+//                 */
+//                if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
+//                    return true;
+//                }
+//                //不是点击外部
+//                return false;
+//            }
+//        });
     }
 
     /**
