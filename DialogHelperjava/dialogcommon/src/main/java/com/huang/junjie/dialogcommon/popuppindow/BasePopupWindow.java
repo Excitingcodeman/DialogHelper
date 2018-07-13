@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.huang.junjie.dialogcommon.utils.DensityUtil;
 
@@ -99,6 +100,26 @@ public class BasePopupWindow extends PopupWindow {
             }
         });
         return this;
+    }
+
+    /**
+     * 设置TextView的内容
+     *
+     * @param id   控件id
+     * @param text TextView的内容
+     * @return
+     */
+    public BasePopupWindow addText(int id, String text) {
+        setText(id, text);
+        return this;
+    }
+
+    public View getView() {
+        return contentView;
+    }
+
+    public void setText(int id, String text) {
+        ((TextView) contentView.findViewById(id)).setText(text);
     }
 
     public static final class Builder {

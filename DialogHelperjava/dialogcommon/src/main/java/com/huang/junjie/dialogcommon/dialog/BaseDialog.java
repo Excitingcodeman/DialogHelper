@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 
 import com.huang.junjie.dialogcommon.R;
@@ -90,7 +91,6 @@ public class BaseDialog extends Dialog {
      *
      * @param id       控件id
      * @param listener 点击事件
-     *
      */
     public BaseDialog addListener(int id, View.OnClickListener listener) {
         view.findViewById(id).setOnClickListener(listener);
@@ -113,8 +113,25 @@ public class BaseDialog extends Dialog {
         return this;
     }
 
+    /**
+     * 设置TextView的内容
+     * @param id   控件id
+     * @param text TextView的内容
+     * @return
+     */
+    public BaseDialog addText(int id, String text) {
+        setText(id, text);
+        return this;
+    }
+
+
+
     public View getView() {
         return view;
+    }
+
+    public void setText(int id, String text) {
+        ((TextView) view.findViewById(id)).setText(text);
     }
 
     public static final class Builder {
@@ -124,7 +141,6 @@ public class BaseDialog extends Dialog {
         private boolean cancelTouchOut;
         private View view;
         private int resStyle = -1;
-
 
         public Builder(Context context) {
             this.context = context;
